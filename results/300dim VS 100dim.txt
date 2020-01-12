@@ -1,0 +1,866 @@
+
+round number: 0
+number of element in the list: 27
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 32136
+element in the list/word in the vocab: 0.19515749968117474
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 40957
+element in the list/word in the vocab: 0.24872621715340656
+
+
+
+cosim of the words and the avg vec
+[('הראשונים', 0.07755528), ('והנ"י', 0.096257284), ('ואביו', 0.22399947), ('ע"ה', 0.33359787), ('אבי', 0.33977515), ('סילט"א', 0.3546406), ('תלמידי', 0.38179976), ('נ"ר', 0.4305715), ('זקני', 0.44406283), ('הצעיר', 0.46755058), ('מו"ר', 0.5188848), ('זי"ע', 0.54436195), ('זיע"א', 0.54462767), ('ז"ל', 0.5512476), ('זללה"ה', 0.5691316), ('כמוה"ר', 0.5935154), ('כמה"ר', 0.6082535), ('הרה"ג', 0.62214464), ('מהר"ר', 0.6650237), ('נ"י', 0.6935593), ('זלה"ה', 0.7230042), ('יצ"ו', 0.7284149), ('זצוק"ל', 0.7350732), ('שליט"א', 0.73521346), ('הי"ו', 0.74674654), ('זצ"ל', 0.7908658), ('נר"ו', 0.818156)]
+
+
+delete the word:
+הראשונים
+cosim from avg is: 0.07755528
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 1
+number of element in the list: 26
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 29566
+element in the list/word in the vocab: 0.17955024382541734
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 45706
+element in the list/word in the vocab: 0.27756623974445394
+
+
+
+cosim of the words and the avg vec
+[('והנ"י', 0.08266975), ('ואביו', 0.22771424), ('ע"ה', 0.33622426), ('אבי', 0.3427731), ('סילט"א', 0.35609668), ('תלמידי', 0.37168464), ('נ"ר', 0.43232012), ('זקני', 0.4455979), ('הצעיר', 0.47403878), ('מו"ר', 0.5103122), ('זי"ע', 0.5430281), ('זיע"א', 0.5443325), ('ז"ל', 0.5446836), ('זללה"ה', 0.5822555), ('כמוה"ר', 0.6037297), ('כמה"ר', 0.6151111), ('הרה"ג', 0.6170197), ('מהר"ר', 0.6626963), ('נ"י', 0.6951827), ('זלה"ה', 0.72769225), ('יצ"ו', 0.7292637), ('שליט"א', 0.7418514), ('זצוק"ל', 0.7455654), ('הי"ו', 0.7503482), ('זצ"ל', 0.795794), ('נר"ו', 0.82232976)]
+
+
+delete the word:
+והנ"י
+cosim from avg is: 0.08266975
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 2
+number of element in the list: 25
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 4837
+element in the list/word in the vocab: 0.029374434464707562
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 10707
+element in the list/word in the vocab: 0.06502213558272149
+
+
+
+cosim of the words and the avg vec
+[('ואביו', 0.22605686), ('ע"ה', 0.33809155), ('אבי', 0.34471306), ('סילט"א', 0.3590802), ('תלמידי', 0.3666152), ('נ"ר', 0.4349146), ('זקני', 0.4495563), ('הצעיר', 0.47652745), ('מו"ר', 0.5105907), ('ז"ל', 0.5277083), ('זי"ע', 0.54353285), ('זיע"א', 0.5453679), ('זללה"ה', 0.58253586), ('כמוה"ר', 0.60892105), ('כמה"ר', 0.6198553), ('הרה"ג', 0.6220273), ('מהר"ר', 0.6686908), ('נ"י', 0.6941368), ('זלה"ה', 0.7201339), ('יצ"ו', 0.7298806), ('שליט"א', 0.74593824), ('זצוק"ל', 0.7499419), ('הי"ו', 0.75283486), ('זצ"ל', 0.7956886), ('נר"ו', 0.82355213)]
+
+
+delete the word:
+ואביו
+cosim from avg is: 0.22605686
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 3
+number of element in the list: 24
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1453
+element in the list/word in the vocab: 0.008823868777593568
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 3515
+element in the list/word in the vocab: 0.02134611063540357
+
+
+
+cosim of the words and the avg vec
+[('אבי', 0.32612702), ('ע"ה', 0.3370477), ('סילט"א', 0.36477816), ('תלמידי', 0.36571187), ('נ"ר', 0.4333759), ('זקני', 0.44148812), ('הצעיר', 0.47659028), ('מו"ר', 0.51793563), ('ז"ל', 0.5325706), ('זי"ע', 0.5421483), ('זיע"א', 0.5507727), ('זללה"ה', 0.58485854), ('כמוה"ר', 0.6100906), ('כמה"ר', 0.6209017), ('הרה"ג', 0.62821484), ('מהר"ר', 0.6660415), ('נ"י', 0.6985245), ('זלה"ה', 0.72177374), ('יצ"ו', 0.72776115), ('שליט"א', 0.7506496), ('זצוק"ל', 0.7521274), ('הי"ו', 0.757843), ('זצ"ל', 0.79827666), ('נר"ו', 0.8279547)]
+
+
+delete the word:
+אבי
+cosim from avg is: 0.32612702
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 4
+number of element in the list: 23
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1278
+element in the list/word in the vocab: 0.007761117892473902
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 3611
+element in the list/word in the vocab: 0.021929105406669216
+
+
+
+cosim of the words and the avg vec
+[('ע"ה', 0.33606678), ('תלמידי', 0.36658585), ('סילט"א', 0.37323785), ('נ"ר', 0.42869246), ('זקני', 0.43265125), ('הצעיר', 0.47643888), ('מו"ר', 0.51607096), ('ז"ל', 0.5361929), ('זי"ע', 0.5417948), ('זיע"א', 0.55372405), ('זללה"ה', 0.58870125), ('כמוה"ר', 0.6129643), ('כמה"ר', 0.6254315), ('הרה"ג', 0.62996686), ('מהר"ר', 0.66255546), ('נ"י', 0.701049), ('זלה"ה', 0.72517943), ('יצ"ו', 0.72715807), ('זצוק"ל', 0.7541865), ('שליט"א', 0.7562741), ('הי"ו', 0.76060635), ('זצ"ל', 0.7998377), ('נר"ו', 0.8292772)]
+
+
+delete the word:
+ע"ה
+cosim from avg is: 0.33606678
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 5
+number of element in the list: 22
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 937
+element in the list/word in the vocab: 0.0056902718820407245
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1488
+element in the list/word in the vocab: 0.0090364189546175
+
+
+
+cosim of the words and the avg vec
+[('תלמידי', 0.36093995), ('סילט"א', 0.37078378), ('נ"ר', 0.42288586), ('זקני', 0.4311695), ('הצעיר', 0.48114538), ('מו"ר', 0.5169269), ('ז"ל', 0.5362476), ('זי"ע', 0.53953075), ('זיע"א', 0.54971576), ('זללה"ה', 0.59245664), ('כמוה"ר', 0.61572087), ('כמה"ר', 0.6282186), ('הרה"ג', 0.63267374), ('מהר"ר', 0.6659772), ('נ"י', 0.706877), ('זלה"ה', 0.72824895), ('יצ"ו', 0.7311926), ('זצוק"ל', 0.7540606), ('שליט"א', 0.7599366), ('הי"ו', 0.76296335), ('זצ"ל', 0.7968827), ('נר"ו', 0.8334072)]
+
+
+delete the word:
+תלמידי
+cosim from avg is: 0.36093995
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 6
+number of element in the list: 21
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 691
+element in the list/word in the vocab: 0.004196347780672509
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1150
+element in the list/word in the vocab: 0.0069837915307863745
+
+
+
+cosim of the words and the avg vec
+[('סילט"א', 0.381532), ('זקני', 0.42123443), ('נ"ר', 0.4222365), ('הצעיר', 0.4842227), ('מו"ר', 0.52465284), ('זי"ע', 0.5328239), ('ז"ל', 0.53302157), ('זיע"א', 0.54965675), ('זללה"ה', 0.5928403), ('כמוה"ר', 0.6236259), ('כמה"ר', 0.6322156), ('הרה"ג', 0.6352724), ('מהר"ר', 0.6702957), ('נ"י', 0.7079881), ('יצ"ו', 0.7265022), ('זלה"ה', 0.72736895), ('זצוק"ל', 0.76014596), ('הי"ו', 0.76207876), ('שליט"א', 0.7627549), ('זצ"ל', 0.7981765), ('נר"ו', 0.8366915)]
+
+
+delete the word:
+סילט"א
+cosim from avg is: 0.381532
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 7
+number of element in the list: 20
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 308
+element in the list/word in the vocab: 0.0018704415578106118
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 832
+element in the list/word in the vocab: 0.005052621350968925
+
+
+
+cosim of the words and the avg vec
+[('נ"ר', 0.42500278), ('זקני', 0.43184415), ('הצעיר', 0.4684312), ('מו"ר', 0.52748895), ('זי"ע', 0.5417608), ('ז"ל', 0.54360354), ('זיע"א', 0.5531845), ('זללה"ה', 0.59339046), ('כמוה"ר', 0.61349916), ('כמה"ר', 0.6253981), ('הרה"ג', 0.63292515), ('מהר"ר', 0.668092), ('נ"י', 0.7114759), ('יצ"ו', 0.72853136), ('זלה"ה', 0.73181516), ('זצוק"ל', 0.7602005), ('הי"ו', 0.76132965), ('שליט"א', 0.76741326), ('זצ"ל', 0.8063762), ('נר"ו', 0.8408294)]
+
+
+delete the word:
+נ"ר
+cosim from avg is: 0.42500278
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 8
+number of element in the list: 19
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 281
+element in the list/word in the vocab: 0.001706474278392149
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 940
+element in the list/word in the vocab: 0.005708490468642776
+
+
+
+cosim of the words and the avg vec
+[('זקני', 0.4326593), ('הצעיר', 0.46562952), ('מו"ר', 0.53122085), ('ז"ל', 0.54252756), ('זי"ע', 0.54650575), ('זיע"א', 0.5549157), ('זללה"ה', 0.59755135), ('כמוה"ר', 0.61573005), ('כמה"ר', 0.62299275), ('הרה"ג', 0.64255214), ('מהר"ר', 0.6700871), ('נ"י', 0.71456015), ('יצ"ו', 0.7233753), ('זלה"ה', 0.7270653), ('הי"ו', 0.7630968), ('זצוק"ל', 0.7632377), ('שליט"א', 0.7733239), ('זצ"ל', 0.8087772), ('נר"ו', 0.8345735)]
+
+
+delete the word:
+זקני
+cosim from avg is: 0.4326593
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 9
+number of element in the list: 18
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 113
+element in the list/word in the vocab: 0.0006862334286772699
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 808
+element in the list/word in the vocab: 0.004906872658152514
+
+
+
+cosim of the words and the avg vec
+[('הצעיר', 0.47595143), ('מו"ר', 0.5299346), ('זי"ע', 0.5379967), ('ז"ל', 0.5416057), ('זיע"א', 0.54897225), ('זללה"ה', 0.5955034), ('כמוה"ר', 0.6218643), ('כמה"ר', 0.6307372), ('הרה"ג', 0.64470863), ('מהר"ר', 0.6677939), ('נ"י', 0.7195252), ('יצ"ו', 0.72669774), ('זלה"ה', 0.7294766), ('זצוק"ל', 0.7595266), ('הי"ו', 0.7699169), ('שליט"א', 0.7782508), ('זצ"ל', 0.8047105), ('נר"ו', 0.8395332)]
+
+
+delete the word:
+הצעיר
+cosim from avg is: 0.47595143
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 10
+number of element in the list: 17
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 41
+element in the list/word in the vocab: 0.00024898735022803596
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 278
+element in the list/word in the vocab: 0.0016882556917900977
+
+
+
+cosim of the words and the avg vec
+[('מו"ר', 0.537789), ('ז"ל', 0.5555569), ('זי"ע', 0.5580596), ('זיע"א', 0.5637685), ('זללה"ה', 0.6092344), ('כמה"ר', 0.611341), ('כמוה"ר', 0.61230594), ('הרה"ג', 0.6447501), ('מהר"ר', 0.65418726), ('יצ"ו', 0.718168), ('נ"י', 0.72206557), ('זלה"ה', 0.7309626), ('הי"ו', 0.7641299), ('זצוק"ל', 0.77229667), ('שליט"א', 0.7841308), ('זצ"ל', 0.8225724), ('נר"ו', 0.8334232)]
+
+
+delete the word:
+מו"ר
+cosim from avg is: 0.537789
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 11
+number of element in the list: 16
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 33
+element in the list/word in the vocab: 0.00020040445262256554
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 227
+element in the list/word in the vocab: 0.0013785397195552236
+
+
+
+cosim of the words and the avg vec
+[('זי"ע', 0.55317503), ('ז"ל', 0.5621207), ('זיע"א', 0.56438744), ('זללה"ה', 0.6128393), ('כמוה"ר', 0.6140971), ('כמה"ר', 0.61726606), ('הרה"ג', 0.6279775), ('מהר"ר', 0.6528413), ('נ"י', 0.7257583), ('יצ"ו', 0.7313309), ('זלה"ה', 0.7417218), ('הי"ו', 0.7696314), ('זצוק"ל', 0.77178824), ('שליט"א', 0.78369), ('זצ"ל', 0.8226621), ('נר"ו', 0.83657694)]
+
+
+delete the word:
+זי"ע
+cosim from avg is: 0.55317503
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 12
+number of element in the list: 15
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 33
+element in the list/word in the vocab: 0.00020040445262256554
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 228
+element in the list/word in the vocab: 0.0013846125817559075
+
+
+
+cosim of the words and the avg vec
+[('זיע"א', 0.5419697), ('ז"ל', 0.5595911), ('זללה"ה', 0.59127903), ('הרה"ג', 0.63075554), ('כמוה"ר', 0.63473463), ('כמה"ר', 0.64021546), ('מהר"ר', 0.6705168), ('נ"י', 0.7301173), ('זלה"ה', 0.742476), ('יצ"ו', 0.7429276), ('זצוק"ל', 0.75652903), ('שליט"א', 0.7769997), ('הי"ו', 0.7798591), ('זצ"ל', 0.7988032), ('נר"ו', 0.85066974)]
+
+
+delete the word:
+זיע"א
+cosim from avg is: 0.5419697
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 13
+number of element in the list: 14
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 27
+element in the list/word in the vocab: 0.0001639672794184627
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 239
+element in the list/word in the vocab: 0.0014514140659634292
+
+
+
+cosim of the words and the avg vec
+[('ז"ל', 0.55612373), ('זללה"ה', 0.5720704), ('הרה"ג', 0.6354805), ('כמוה"ר', 0.6385872), ('כמה"ר', 0.64921737), ('מהר"ר', 0.68378925), ('זלה"ה', 0.7368119), ('זצוק"ל', 0.7404184), ('נ"י', 0.7456839), ('יצ"ו', 0.74919415), ('שליט"א', 0.7810981), ('הי"ו', 0.7821531), ('זצ"ל', 0.78731877), ('נר"ו', 0.8569093)]
+
+
+delete the word:
+ז"ל
+cosim from avg is: 0.55612373
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 14
+number of element in the list: 13
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 31
+element in the list/word in the vocab: 0.00018825872822119793
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 33
+element in the list/word in the vocab: 0.00020040445262256554
+
+
+
+cosim of the words and the avg vec
+[('זללה"ה', 0.5588133), ('כמוה"ר', 0.65879387), ('הרה"ג', 0.6600614), ('כמה"ר', 0.6704459), ('זלה"ה', 0.6858207), ('מהר"ר', 0.6934705), ('זצוק"ל', 0.7324897), ('נ"י', 0.7534812), ('זצ"ל', 0.7623602), ('יצ"ו', 0.7625668), ('שליט"א', 0.79410625), ('הי"ו', 0.8027247), ('נר"ו', 0.8493844)]
+
+
+delete the word:
+זללה"ה
+cosim from avg is: 0.5588133
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 15
+number of element in the list: 12
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 14
+element in the list/word in the vocab: 8.502007080957326e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 20
+element in the list/word in the vocab: 0.00012145724401367609
+
+
+
+cosim of the words and the avg vec
+[('כמוה"ר', 0.66169226), ('הרה"ג', 0.66894305), ('זלה"ה', 0.6751838), ('כמה"ר', 0.6808594), ('מהר"ר', 0.7010709), ('זצוק"ל', 0.7190163), ('זצ"ל', 0.7457768), ('נ"י', 0.75812054), ('יצ"ו', 0.7678883), ('שליט"א', 0.79124963), ('הי"ו', 0.80954254), ('נר"ו', 0.85661656)]
+
+
+delete the word:
+כמוה"ר
+cosim from avg is: 0.66169226
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 16
+number of element in the list: 11
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 12
+element in the list/word in the vocab: 7.287434640820565e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 18
+element in the list/word in the vocab: 0.00010931151961230847
+
+
+
+cosim of the words and the avg vec
+[('כמה"ר', 0.64931536), ('הרה"ג', 0.6678561), ('זלה"ה', 0.6810476), ('מהר"ר', 0.68324065), ('זצוק"ל', 0.7294301), ('זצ"ל', 0.76438725), ('יצ"ו', 0.77318096), ('נ"י', 0.77452666), ('שליט"א', 0.8072369), ('הי"ו', 0.8124502), ('נר"ו', 0.8617189)]
+
+
+delete the word:
+כמה"ר
+cosim from avg is: 0.64931536
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 17
+number of element in the list: 10
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 11
+element in the list/word in the vocab: 6.680148420752184e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 21
+element in the list/word in the vocab: 0.0001275301062143599
+
+
+
+cosim of the words and the avg vec
+[('מהר"ר', 0.64525986), ('הרה"ג', 0.6726942), ('זלה"ה', 0.68604165), ('זצוק"ל', 0.74713045), ('יצ"ו', 0.7667134), ('זצ"ל', 0.79382706), ('נ"י', 0.7991968), ('הי"ו', 0.808012), ('שליט"א', 0.8298755), ('נר"ו', 0.85987747)]
+
+
+delete the word:
+מהר"ר
+cosim from avg is: 0.64525986
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 18
+number of element in the list: 9
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 9
+element in the list/word in the vocab: 5.4655759806154237e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 15
+element in the list/word in the vocab: 9.109293301025707e-05
+
+
+
+cosim of the words and the avg vec
+[('הרה"ג', 0.66863203), ('זלה"ה', 0.6845506), ('זצוק"ל', 0.76936436), ('יצ"ו', 0.7700619), ('נ"י', 0.80568063), ('זצ"ל', 0.80804694), ('הי"ו', 0.8104123), ('שליט"א', 0.84689045), ('נר"ו', 0.8606319)]
+
+
+delete the word:
+הרה"ג
+cosim from avg is: 0.66863203
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 19
+number of element in the list: 8
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 8
+element in the list/word in the vocab: 4.858289760547044e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 10
+element in the list/word in the vocab: 6.072862200683804e-05
+
+
+
+cosim of the words and the avg vec
+[('זלה"ה', 0.721763), ('יצ"ו', 0.77806205), ('זצוק"ל', 0.7803269), ('הי"ו', 0.7979797), ('נ"י', 0.80539703), ('זצ"ל', 0.82533014), ('שליט"א', 0.845902), ('נר"ו', 0.8630274)]
+
+
+delete the word:
+זלה"ה
+cosim from avg is: 0.721763
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 20
+number of element in the list: 7
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 7
+element in the list/word in the vocab: 4.251003540478663e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 6
+element in the list/word in the vocab: 3.6437173204102824e-05
+
+
+
+cosim of the words and the avg vec
+[('זצוק"ל', 0.7653264), ('יצ"ו', 0.7850577), ('זצ"ל', 0.8039267), ('הי"ו', 0.8160067), ('נ"י', 0.83093894), ('נר"ו', 0.8515768), ('שליט"א', 0.87018013)]
+
+
+delete the word:
+זצוק"ל
+cosim from avg is: 0.7653264
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 21
+number of element in the list: 6
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 6
+element in the list/word in the vocab: 3.6437173204102824e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 5
+element in the list/word in the vocab: 3.036431100341902e-05
+
+
+
+cosim of the words and the avg vec
+[('זצ"ל', 0.7626711), ('יצ"ו', 0.80650294), ('הי"ו', 0.83061504), ('נר"ו', 0.8523384), ('נ"י', 0.8554067), ('שליט"א', 0.8802661)]
+
+
+delete the word:
+זצ"ל
+cosim from avg is: 0.7626711
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 22
+number of element in the list: 5
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 5
+element in the list/word in the vocab: 3.036431100341902e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 5
+element in the list/word in the vocab: 3.036431100341902e-05
+
+
+
+cosim of the words and the avg vec
+[('יצ"ו', 0.8325527), ('נר"ו', 0.8538218), ('הי"ו', 0.85784674), ('נ"י', 0.8615804), ('שליט"א', 0.86646026)]
+
+
+delete the word:
+יצ"ו
+cosim from avg is: 0.8325527
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 23
+number of element in the list: 4
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 4
+element in the list/word in the vocab: 2.429144880273522e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 4
+element in the list/word in the vocab: 2.429144880273522e-05
+
+
+
+cosim of the words and the avg vec
+[('הי"ו', 0.848383), ('נר"ו', 0.84964275), ('שליט"א', 0.8852745), ('נ"י', 0.8888531)]
+
+
+delete the word:
+הי"ו
+cosim from avg is: 0.848383
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 24
+number of element in the list: 3
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 2
+element in the list/word in the vocab: 1.214572440136761e-05
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 3
+element in the list/word in the vocab: 1.8218586602051412e-05
+
+
+
+cosim of the words and the avg vec
+[('נר"ו', 0.84307617), ('שליט"א', 0.90204096), ('נ"י', 0.9223831)]
+
+
+delete the word:
+נר"ו
+cosim from avg is: 0.84307617
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 25
+number of element in the list: 2
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1
+element in the list/word in the vocab: 6.072862200683805e-06
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 2
+element in the list/word in the vocab: 1.214572440136761e-05
+
+
+
+cosim of the words and the avg vec
+[('נ"י', 0.93184197), ('שליט"א', 0.9492651)]
+
+
+delete the word:
+נ"י
+cosim from avg is: 0.93184197
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+round number: 26
+number of element in the list: 1
+
+=====
+
+in the 300dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1
+element in the list/word in the vocab: 6.072862200683805e-06
+
++++++
+
+in the 100dim vectors:
+number of word in all the vocab: 164667
+number of word in the result: 1
+element in the list/word in the vocab: 6.072862200683805e-06
+
+
+
+cosim of the words and the avg vec
+[('שליט"א', 1.0)]
+
+
+delete the word:
+שליט"א
+cosim from avg is: 1.0
+
+------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+
+
+​
