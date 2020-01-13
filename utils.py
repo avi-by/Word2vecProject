@@ -82,7 +82,7 @@ def my_var(lst,model):
     a = numpy.array([])
     for i in lst:
         a = numpy.append(a, model.wv.get_vector(i))
-    a = a.reshape(len(lst), model.vector_size)
+    a = a.reshape(len(lst), len(model.wv.get_vector(lst[0])))
     res = numpy.var(a, axis=0)
     nres=[]
     for e in range(len(res)):
@@ -101,6 +101,37 @@ def remove_dim(lst,model,dim):
     model.wv.vectors=vectors
     model.wv.vectors_norm=None
     model.wv.init_sims()
+    return model
+
+
+def remove_words_from_lst(lst,model,num=1):
+    if num <= 0:
+        return lst
+    dist = []
+    for word in lst:
+        temp = my_similarity(model.wv.get_vector(word), avg_vec_model(lst, model))
+        dist.append((word, temp))
+    dist.sort(key=lambda k: k[1])
+    del dist[0]
+    res = [e[0] for e in dist]
+    if num <= 1:
+        return res
+    return remove_words_from_lst(res,model,num-1)
+
+
+def remove_dim_and_words(lst,model,dim_num=50,words_num=0):
+    orgvec=model.wv.vectors
+    model = remove_dim(lst,model,len(model.wv.get_vector(lst[0]))-dim_num)
+    nlst=lst
+    while words_num>0:
+        nlst=remove_words_from_lst(nlst,model)
+        words_num-=1
+        # return the model to its orginal state and remove another dim by the new list
+        model.wv.vectors = orgvec
+        model.wv.vectors_norm = None
+        model.wv.init_sims()
+        remove_dim(nlst, model, len(model.wv.get_vector(nlst[0])) - dim_num)
+    return nlst , model
 
 
 """
