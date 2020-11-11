@@ -2,5 +2,5 @@
 /.ipynb_checkpoints
 /__pycache__
 /raw text
-/word2vec vectors
+/word2vec models
 /tests

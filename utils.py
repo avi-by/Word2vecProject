@@ -237,7 +237,7 @@ def remove_dim_and_words(lst, model, dim_num=-0.3, num_of_words_to_subtract=0,no
     return remove_dim(new_lst,model,dim_num,norm) , new_lst
 
 
-def check_words(lst,model,norm=False):
+def __check_words(lst, model, norm=False):
     data = ps.ExcelFile('word_list.xlsx')
     data = data.parse('words list')
     first=0
@@ -255,7 +255,7 @@ def check_words(lst,model,norm=False):
     return count, not_count , first
 
 
-def output_res(lst,model,savepath ="output.xlsx",norm=False):
+def output_res(lst,model,savepath ="output.xls",norm=False):
     wb = Workbook()
     sheet1 = wb.add_sheet('result')
     sheet1.write(0, 0, "the words:")
@@ -279,7 +279,7 @@ def output_res(lst,model,savepath ="output.xlsx",norm=False):
             temp.wv.vectors_norm = None
             temp.wv.init_sims()
             res = one_mean(new_lst, temp,norm)
-            count, not_count, first100 = check_words(new_lst, temp,norm)
+            count, not_count, first100 = __check_words(new_lst, temp, norm)
             sheet1.write(line, 0, len(new_model.vectors[0]))
             sheet1.write(line, 1, len(new_lst))
             sheet1.write(line, 2, len(new_model.vectors))
@@ -320,6 +320,7 @@ def model_details(model):
     print(model.vocabulary.min_count, "min count")
     print(model.vector_size, " vector size")
     print(model.epochs, "epochs")
+    print(len(model.wv.vectors),"number of vectors")
     if model.sg == 1:
         print("Training algorithm: skip-gram")
     else:
