@@ -3,7 +3,7 @@
 train new text example:    
 
 
-```
+```PYTHON
 import train_new_text_with_codec as tr    
 tr.train("example.txt","utf-8","modelFileName") 
 ```
