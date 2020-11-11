@@ -1,0 +1,6 @@
+/.idea
+/.ipynb_checkpoints
+/__pycache__
+/raw text
+/word2vec vectors
+/tests

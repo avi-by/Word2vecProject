@@ -1,0 +1,950 @@
+the list of the words:
+['נר"ו', 'יצ"ו', 'זצוק"ל', 'הי"ו', 'זלה"ה', 'שליט"א', 'נ"י', 'עט"ר', 'זללה"ה', 'ז"ל', 'מו"ר', 'זי"ע', 'נ"ר', "ני'", 'ידידי', 'אהובי', 'ידי"נ', 'נ"ע', 'נלב"ע', 'מ"ר', 'שיחיה', "שיחי'", 'אאמו"ר', 'מו"ח', 'זצלה"ה', 'זצוקללה"ה', 'ידינ"פ'] 
+
+
+the number of the words:  27
+vectors dim is:  300
+count:  704
+len:  18594
+%  0.037861675809400884
+number of word in the result and not in the classified words:  16607
+
+
+
+vectors dim is:  290
+count:  704
+len:  26674
+%  0.026392741995951114
+number of word in the result and not in the classified words:  24687
+
+
+
+vectors dim is:  280
+count:  704
+len:  23854
+%  0.029512869958916745
+number of word in the result and not in the classified words:  21867
+
+
+
+vectors dim is:  270
+count:  704
+len:  22308
+%  0.03155818540433925
+number of word in the result and not in the classified words:  20321
+
+
+
+vectors dim is:  260
+count:  704
+len:  22343
+%  0.03150874994405407
+number of word in the result and not in the classified words:  20356
+
+
+
+vectors dim is:  250
+count:  704
+len:  23150
+%  0.03041036717062635
+number of word in the result and not in the classified words:  21163
+
+
+
+vectors dim is:  240
+count:  704
+len:  20032
+%  0.03514376996805112
+number of word in the result and not in the classified words:  18045
+
+
+
+vectors dim is:  230
+count:  704
+len:  19106
+%  0.03684706374960745
+number of word in the result and not in the classified words:  17119
+
+
+
+vectors dim is:  220
+count:  704
+len:  21223
+%  0.03317155915751779
+number of word in the result and not in the classified words:  19236
+
+
+
+vectors dim is:  210
+count:  704
+len:  25591
+%  0.027509671368840607
+number of word in the result and not in the classified words:  23604
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  26
+vectors dim is:  300
+count:  623
+len:  2277
+%  0.2736056214317084
+number of word in the result and not in the classified words:  526
+
+
+
+vectors dim is:  290
+count:  633
+len:  2390
+%  0.26485355648535563
+number of word in the result and not in the classified words:  605
+
+
+
+vectors dim is:  280
+count:  624
+len:  2271
+%  0.2747688243064729
+number of word in the result and not in the classified words:  513
+
+
+
+vectors dim is:  270
+count:  603
+len:  1999
+%  0.3016508254127064
+number of word in the result and not in the classified words:  317
+
+
+
+vectors dim is:  260
+count:  603
+len:  2107
+%  0.2861888941623161
+number of word in the result and not in the classified words:  395
+
+
+
+vectors dim is:  250
+count:  599
+len:  1954
+%  0.30655066530194475
+number of word in the result and not in the classified words:  293
+
+
+
+vectors dim is:  240
+count:  572
+len:  1769
+%  0.3233465234595817
+number of word in the result and not in the classified words:  210
+
+
+
+vectors dim is:  230
+count:  535
+len:  1501
+%  0.3564290473017988
+number of word in the result and not in the classified words:  95
+
+
+
+vectors dim is:  220
+count:  568
+len:  1709
+%  0.3323581041544763
+number of word in the result and not in the classified words:  159
+
+
+
+vectors dim is:  210
+count:  559
+len:  1590
+%  0.35157232704402513
+number of word in the result and not in the classified words:  65
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  25
+vectors dim is:  300
+count:  418
+len:  1031
+%  0.40543161978661496
+number of word in the result and not in the classified words:  23
+
+
+
+vectors dim is:  290
+count:  426
+len:  1080
+%  0.39444444444444443
+number of word in the result and not in the classified words:  25
+
+
+
+vectors dim is:  280
+count:  464
+len:  1233
+%  0.37631792376317924
+number of word in the result and not in the classified words:  46
+
+
+
+vectors dim is:  270
+count:  482
+len:  1298
+%  0.3713405238828968
+number of word in the result and not in the classified words:  48
+
+
+
+vectors dim is:  260
+count:  463
+len:  1251
+%  0.3701039168665068
+number of word in the result and not in the classified words:  41
+
+
+
+vectors dim is:  250
+count:  435
+len:  1076
+%  0.40427509293680297
+number of word in the result and not in the classified words:  14
+
+
+
+vectors dim is:  240
+count:  439
+len:  1071
+%  0.4098972922502334
+number of word in the result and not in the classified words:  8
+
+
+
+vectors dim is:  230
+count:  471
+len:  1171
+%  0.4022203245089667
+number of word in the result and not in the classified words:  17
+
+
+
+vectors dim is:  220
+count:  506
+len:  1270
+%  0.3984251968503937
+number of word in the result and not in the classified words:  14
+
+
+
+vectors dim is:  210
+count:  572
+len:  1830
+%  0.31256830601092894
+number of word in the result and not in the classified words:  240
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  24
+vectors dim is:  300
+count:  337
+len:  727
+%  0.46354883081155435
+number of word in the result and not in the classified words:  1
+
+
+
+vectors dim is:  290
+count:  326
+len:  696
+%  0.46839080459770116
+number of word in the result and not in the classified words:  1
+
+
+
+vectors dim is:  280
+count:  351
+len:  767
+%  0.4576271186440678
+number of word in the result and not in the classified words:  1
+
+
+
+vectors dim is:  270
+count:  431
+len:  1102
+%  0.3911070780399274
+number of word in the result and not in the classified words:  18
+
+
+
+vectors dim is:  260
+count:  487
+len:  1331
+%  0.36589030803906836
+number of word in the result and not in the classified words:  55
+
+
+
+vectors dim is:  250
+count:  504
+len:  1389
+%  0.36285097192224625
+number of word in the result and not in the classified words:  75
+
+
+
+vectors dim is:  240
+count:  504
+len:  1327
+%  0.37980406932931426
+number of word in the result and not in the classified words:  50
+
+
+
+vectors dim is:  230
+count:  521
+len:  1362
+%  0.38252569750367105
+number of word in the result and not in the classified words:  64
+
+
+
+vectors dim is:  220
+count:  577
+len:  1778
+%  0.3245219347581552
+number of word in the result and not in the classified words:  214
+
+
+
+vectors dim is:  210
+count:  470
+len:  1180
+%  0.3983050847457627
+number of word in the result and not in the classified words:  9
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  23
+vectors dim is:  300
+count:  195
+len:  321
+%  0.6074766355140186
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  131
+len:  183
+%  0.7158469945355191
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  119
+len:  157
+%  0.7579617834394905
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  91
+len:  107
+%  0.8504672897196262
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  110
+len:  153
+%  0.7189542483660131
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  102
+len:  131
+%  0.7786259541984732
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  118
+len:  157
+%  0.7515923566878981
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  139
+len:  190
+%  0.7315789473684211
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  103
+len:  129
+%  0.7984496124031008
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  92
+len:  109
+%  0.8440366972477065
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  22
+vectors dim is:  300
+count:  148
+len:  221
+%  0.669683257918552
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  136
+len:  194
+%  0.7010309278350515
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  123
+len:  170
+%  0.7235294117647059
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  89
+len:  106
+%  0.839622641509434
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  100
+len:  134
+%  0.746268656716418
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  87
+len:  110
+%  0.7909090909090909
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  94
+len:  123
+%  0.7642276422764228
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  92
+len:  111
+%  0.8288288288288288
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  94
+len:  117
+%  0.8034188034188035
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  93
+len:  111
+%  0.8378378378378378
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  21
+vectors dim is:  300
+count:  142
+len:  221
+%  0.6425339366515838
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  125
+len:  182
+%  0.6868131868131868
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  108
+len:  147
+%  0.7346938775510204
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  85
+len:  105
+%  0.8095238095238095
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  83
+len:  106
+%  0.7830188679245284
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  67
+len:  81
+%  0.8271604938271605
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  64
+len:  75
+%  0.8533333333333334
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  59
+len:  64
+%  0.921875
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  62
+len:  69
+%  0.8985507246376812
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  54
+len:  60
+%  0.9
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  20
+vectors dim is:  300
+count:  53
+len:  62
+%  0.8548387096774194
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  56
+len:  67
+%  0.835820895522388
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  57
+len:  70
+%  0.8142857142857143
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  56
+len:  64
+%  0.875
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  44
+len:  47
+%  0.9361702127659575
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  42
+len:  43
+%  0.9767441860465116
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  46
+len:  49
+%  0.9387755102040817
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  52
+len:  55
+%  0.9454545454545454
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  50
+len:  54
+%  0.9259259259259259
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  51
+len:  55
+%  0.9272727272727272
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  19
+vectors dim is:  300
+count:  41
+len:  44
+%  0.9318181818181818
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  36
+len:  37
+%  0.972972972972973
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  39
+len:  44
+%  0.8863636363636364
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  35
+len:  35
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  42
+len:  43
+%  0.9767441860465116
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  30
+len:  30
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  32
+len:  32
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  34
+len:  34
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  46
+len:  47
+%  0.9787234042553191
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  42
+len:  42
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  18
+vectors dim is:  300
+count:  39
+len:  42
+%  0.9285714285714286
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  34
+len:  37
+%  0.918918918918919
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  33
+len:  34
+%  0.9705882352941176
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  38
+len:  40
+%  0.95
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  41
+len:  42
+%  0.9761904761904762
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  29
+len:  29
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  32
+len:  32
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  33
+len:  33
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  44
+len:  46
+%  0.9565217391304348
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  38
+len:  38
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
+the number of the words:  17
+vectors dim is:  300
+count:  31
+len:  33
+%  0.9393939393939394
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  290
+count:  31
+len:  33
+%  0.9393939393939394
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  280
+count:  29
+len:  31
+%  0.9354838709677419
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  270
+count:  32
+len:  33
+%  0.9696969696969697
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  260
+count:  25
+len:  25
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  250
+count:  25
+len:  25
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  240
+count:  30
+len:  30
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  230
+count:  31
+len:  31
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  220
+count:  27
+len:  27
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+vectors dim is:  210
+count:  29
+len:  29
+%  1.0
+number of word in the result and not in the classified words:  0
+
+
+
+
+
+======================================
+======================================
+======================================
