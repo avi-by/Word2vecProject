@@ -2,9 +2,11 @@
 
 train new text example:    
 
-### `import train_new_text_with_codec as tr`  
-### `tr.train("example.txt","utf-8","modelFileName")`  
 
+```
+import train_new_text_with_codec as tr    
+tr.train("example.txt","utf-8","modelFileName") 
+```
 that's it!  
 
 there is more parameters but the default of the function is very good  
