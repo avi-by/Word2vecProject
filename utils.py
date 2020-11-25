@@ -49,7 +49,7 @@ def one_mean(lst, model, norm=False):
     # calculate the avg vector
     avg = avg_vec_model(lst, model, norm)
     # calculate the similarity(distance by cosine similarity metrica) of every word in the list and the avg vector
-    dist = my_distances(avg, lst, model, norm)
+    dist = distances(avg, lst, model, norm)
     # sort the distances from the farthest to the closest and take the first, the farthest
     dist.sort()
     dist = dist[0]
@@ -89,7 +89,7 @@ def my_similarity(v1, v2):
     return numpy.dot(gensim.matutils.unitvec(v1), gensim.matutils.unitvec(v2))
 
 
-def my_distances(vec, lst, model, norn=False):
+def distances(vec, lst, model, norm=False):
     """
     calculate the similarity (distance by cosine similarity metrica) from the vector and every word in the lst list
     by using the word vector of the word from the model
@@ -102,8 +102,15 @@ def my_distances(vec, lst, model, norn=False):
     wv = model.wv if type(model) is not gensim.models.keyedvectors.Word2VecKeyedVectors else model
     res = []
     for i in lst:
-        res.append(my_similarity(vec, wv.word_vec(i, use_norm=norn)))
+        res.append(my_similarity(vec, wv.word_vec(i, use_norm=norm)))
     return res
+
+
+def vectors_score(lst, model, method="var", norm=False, **kwargs):
+    return {
+        'var': my_var(lst, model, norm),
+        'ent': entropy_model(lst, model, kwargs['decimals'] if 'decimals' in kwargs else 0)
+    }[method]
 
 
 def my_var(lst, model, norm=False):
@@ -130,7 +137,25 @@ def my_var(lst, model, norm=False):
     return var_array
 
 
-def remove_dim(lst, model, dim_num, by_variance=False, norm=False):
+def entropy_model(lst, model, decimals=0):
+    arr = numpy.vstack([(model.wv.get_vector(word)) for word in lst])
+    return matrix_entropy(arr, decimals)
+
+
+def matrix_entropy(data, decimals=0):
+    trans = data.transpose()
+    trans = numpy.around(trans, decimals=decimals)
+    return list(zip(range(data.shape[1]), [entropy(t) for t in trans]))
+
+
+def entropy(x):
+    unq, converted_data = numpy.unique(x, return_inverse=True)
+    count = numpy.bincount(converted_data)
+    p = count / float(len(x))
+    return -numpy.sum(p * numpy.log2(p))
+
+
+def remove_dim(lst, model, dim_num, method="var", by_values=False, norm=False, **kwargs):
     """
     make from the model and the word list (lst) new model with new vectors with only dim_num dimension
     the vector calculate by calculate the variance of the dimension of the word vectors of "lst"
@@ -140,14 +165,14 @@ def remove_dim(lst, model, dim_num, by_variance=False, norm=False):
     then if dim num > 0  dim num is the number of the dimension in the result
     if  dim num <0 dim num is the number of dimension to remove
     and drop the (model.wv.vectors_size - dim_num ) dimension with the biggest variance
-    if by_variance is true then dim_num represents variance size,
+    if by_values is true then dim_num represents variance size,
     all the dimensions with variance less then or equal to dim_num will include in the result
-    and if by_variance is true and dim_num <0 then the include dimensions is the dimension with variance less then
+    and if by_values is true and dim_num <0 then the include dimensions is the dimension with variance less then
     or equal to the largest variance value + dim_num (dim_num is negative)
-    :param lst: list of words to calculate the variance
+    :param lst: list of words to calculate the score of the vectors
     :param model: Word2Vec model
     :param dim_num: vector size of the new model
-    :param by_variance: filter the dimensions by the size of their variance
+    :param by_values: filter the dimensions by the size of their score method
     :param norm: use normalized vectors
     :return: KeyedVectors object with the new vectors
     """
@@ -156,7 +181,7 @@ def remove_dim(lst, model, dim_num, by_variance=False, norm=False):
         new_model = KeyedVectors(wv.vectors.shape[1])
         new_model.add(wv.index2word, wv.vectors)
         return new_model
-    if not by_variance:
+    if not by_values:
         #  if dim num is percent of the vector size
         if -1 < dim_num < 1:
             dim_num = int(wv.vector_size * dim_num)
@@ -165,19 +190,19 @@ def remove_dim(lst, model, dim_num, by_variance=False, norm=False):
         else:
             dim = dim_num
     arr = []
-    var_lst = (my_var(lst, model, norm))
-    # sort by variance from smaller to bigger and that is also from the similar to the different
-    var_lst.sort(key=lambda k: k[1])
-    if not by_variance:
+    score_lst = (vectors_score(lst, model,method= method,norm= norm,kwargs= kwargs))
+    # sort by the score from smaller to bigger and that is also from the similar to the different
+    score_lst.sort(key=lambda k: k[1])
+    if not by_values:
         # list of dimension, the list size is dim_num,
-        # the dimensions in the list is the most similar dimension - the smaller variance
-        for i in var_lst[:dim]:
+        # the dimensions in the list is the most similar\good dimension - the smaller score
+        for i in score_lst[:dim]:
             arr.append(i[0])
     else:
         if dim_num < 0:
-            dim_num = var_lst[-1][1] + dim_num
-        # take the dimensions with variance less than or equal to dim_num
-        for i in var_lst:
+            dim_num = score_lst[-1][1] + dim_num
+        # take the dimensions with score less than or equal to dim_num
+        for i in score_lst:
             if i[1] <= dim_num:
                 arr.append(i[0])
     # sort by dimension index
@@ -218,7 +243,8 @@ def remove_words_from_lst(lst, model, num=1, norm=False):
     return remove_words_from_lst(res, model, num - 1, norm)
 
 
-def remove_dim_and_words(lst, model, dim_num=-0.3, num_of_words_to_remove=0, by_variance=False, norm=False):
+def remove_dim_and_words(lst, model, dim_num=-0.3, num_of_words_to_remove=0, method="var", by_values=False, norm=False,
+                         **kwargs):
     """
     remove from the words list "lst" "num_of_words_to_remove" words
     then remove dimension by dim_num with the new list of words
@@ -230,12 +256,12 @@ def remove_dim_and_words(lst, model, dim_num=-0.3, num_of_words_to_remove=0, by_
                     then if dim num > 0  dim num is the number of the dimension in the result
                     if  dim num <0 dim num is the number of dimension to remove
     :param num_of_words_to_remove: number of words to remove
-    :param by_variance: filter the dimensions by the size of their variance
+    :param by_values: filter the dimensions by the size of their variance
     :param norm: use normalized vectors
     :return: KeyedVectors object with the new vectors , list of the new words
     """
     new_lst = remove_words_from_lst(lst, model, num_of_words_to_remove, norm)
-    return remove_dim(new_lst, model, dim_num, by_variance, norm), new_lst
+    return remove_dim(new_lst, model, dim_num, method=method, by_values=by_values, norm=norm, kwargs=kwargs), new_lst
 
 
 def plot(data_x, data_y, x_label="", y_label="", title="", save_path="res.png", save=True, arg="", xlim=None,
@@ -294,8 +320,8 @@ def check_words(lst, model, classified_words_file='classified words.xlsx', norm=
     return count, not_count, first100
 
 
-def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0,
-               by_variance=True,
+def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0,method="var",
+               by_values=True,
                classified_words_file='classified words.xlsx', norm=False):
     """
     make xls file with data on the result of one mean on the model before anf after the remove of the dimensions
@@ -308,7 +334,7 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
     :param num_words_remove: number of words to remove from the lst, the function remove 1 word,
     save the results in the file then remove the next words. the function will do it over again
     for every step (= number of dimension, by 'step' parameter)
-    :param by_variance:  if true the number of dimension to remove (=step parameter) will calculate as the variance size
+    :param by_values:  if true the number of dimension to remove (=step parameter) will calculate as the variance size
     and not by the dimension quantity
     :param classified_words_file: xls file with classified words
     :param norm: use normalized vectors
@@ -330,7 +356,7 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
     line = 4
     for dim_num in steps:
         for word_num in range(num_words_remove + 1):
-            new_model, new_lst = remove_dim_and_words(lst, model, dim_num, word_num, by_variance=by_variance, norm=norm)
+            new_model, new_lst = remove_dim_and_words(lst, model, dim_num, word_num, method=method, by_values=by_values, norm=norm)
             res = one_mean(new_lst, new_model, norm)
             count, not_count, first100 = check_words(new_lst, new_model, classified_words_file,
                                                      norm=norm)
@@ -346,7 +372,7 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
     wb.save(save_path)
 
 
-def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_variance=True,
+def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_values=True, method="var",
                  classified_words_file='classified words.xlsx', norm=False):
     """
     get list of words and word2vec model and how much dimension to remove plot 3 graph from the results,
@@ -356,7 +382,7 @@ def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_variance=True
     :param lst: list of words
     :param model: word2vec model
     :param steps: range, for the removing of the dimensions
-    :param by_variance: if true remove dimensions by the variance size and not by the quantity of the dimensions
+    :param by_values: if true remove dimensions by the variance size and not by the quantity of the dimensions
     :param classified_words_file: xls file with classified words
     :param norm: use normalized vectors
     :return:
@@ -366,7 +392,7 @@ def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_variance=True
     goodresarray = []
     resnumarray = []
     for dim_num in steps:
-        new_model = remove_dim(lst, model, dim_num, by_variance, norm)
+        new_model = remove_dim(lst, model, dim_num, method=method, by_values=by_values, norm=norm)
         res = one_mean(lst, new_model, norm)
         count, not_count, first100 = check_words(lst, new_model, classified_words_file, norm=norm)
         xdata.append(new_model.vector_size)
@@ -374,7 +400,7 @@ def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_variance=True
         goodresarray.append(count)
         resnumarray.append(len(res))
     titel = "" if len(steps) == 1 else "remove dim by step of " + str(steps[1] - steps[0])
-    if titel is not "" and by_variance is True:
+    if titel is not "" and by_values is True:
         titel += " variance size"
     plot(xdata, resnumarray, "number of dimension", "number of result", titel, "result number.png")
     plot(xdata, goodresarray, "number of dimension", "number of the good results", titel, "good results.png", arg='g')
