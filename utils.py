@@ -107,13 +107,23 @@ def distances(vec, lst, model, norm=False):
 
 
 def vectors_score(lst, model, method="var", norm=False, **kwargs):
+    """
+    make list of the dimension and score for every dimension. the score calculate by the method from the parameter on the
+    list of the words from the lst parameter/
+    :param lst: list of the words
+    :param model: word2vec model
+    :param method: the score method
+    :param norm: if true use the normalized vectors
+    :param kwargs: for special parameters for the selected method
+    :return: list of (dimension number, score of the dimension)
+    """
     return {
-        'var': my_var(lst, model, norm),
+        'var': var(lst, model, norm),
         'ent': entropy_model(lst, model, kwargs['decimals'] if 'decimals' in kwargs else 0)
     }[method]
 
 
-def my_var(lst, model, norm=False):
+def var(lst, model, norm=False):
     """
     calculate the variance of each dimension in the word vectors of the words in lst
     and return list of the dimension and its variance
@@ -138,20 +148,41 @@ def my_var(lst, model, norm=False):
 
 
 def entropy_model(lst, model, decimals=0):
+    """
+    make list of dimension and score of every dimension, the score calculate by its entropy. the entropy calculate by
+    the vectors of the words from lst. the method round the values, with decimals 0 its integers with decimals 1 its one
+    digit after the point and so on
+    :param lst:list of words
+    :param model:word2vec model
+    :param decimals:number of digits after the points, for the round method
+    :return:list of (dimension number, entropy of the dimension)
+    """
     arr = numpy.vstack([(model.wv.get_vector(word)) for word in lst])
     return matrix_entropy(arr, decimals)
 
 
 def matrix_entropy(data, decimals=0):
+    """
+    make list of dimension and score of every dimension, the score calculate by its entropy.
+    the method round the values, with decimals 0 its integers with decimals 1 its one digit after the point and so on
+    :param data: numpy matrix
+    :param decimals: number of digits after the points, for the round method
+    :return: list of (dimension number, entropy of the dimension)
+    """
     trans = data.transpose()
     trans = numpy.around(trans, decimals=decimals)
     return list(zip(range(data.shape[1]), [entropy(t) for t in trans]))
 
 
-def entropy(x):
-    unq, converted_data = numpy.unique(x, return_inverse=True)
+def entropy(data_vector):
+    """
+    calculate entropy of vector
+    :param data_vector: vector with the data values
+    :return: float value of the entropy
+    """
+    unq, converted_data = numpy.unique(data_vector, return_inverse=True)
     count = numpy.bincount(converted_data)
-    p = count / float(len(x))
+    p = count / float(len(data_vector))
     return -numpy.sum(p * numpy.log2(p))
 
 
@@ -190,7 +221,7 @@ def remove_dim(lst, model, dim_num, method="var", by_values=False, norm=False, *
         else:
             dim = dim_num
     arr = []
-    score_lst = (vectors_score(lst, model,method= method,norm= norm,kwargs= kwargs))
+    score_lst = (vectors_score(lst, model, method=method, norm=norm, kwargs=kwargs))
     # sort by the score from smaller to bigger and that is also from the similar to the different
     score_lst.sort(key=lambda k: k[1])
     if not by_values:
@@ -268,15 +299,15 @@ def plot(data_x, data_y, x_label="", y_label="", title="", save_path="res.png", 
          ylim=None):
     """
     plot graph and save it as png file
-    :param data_x: the values in the x axis
+    :param data_x: the values in the data_vector axis
     :param data_y: the values in the y axis
-    :param x_label: the label to show on the x axis
+    :param x_label: the label to show on the data_vector axis
     :param y_label: the label to show on the y axis
     :param title: the title of the graph
     :param save_path: the path to save the result
     :param save: if true save the graph to file else only show him
     :param arg: argument for plot func (see pyplot documents)
-    :param xlim: the range of the x axis
+    :param xlim: the range of the data_vector axis
     :param ylim:  the range of the y axis
     :return:
     """
@@ -320,7 +351,7 @@ def check_words(lst, model, classified_words_file='classified words.xlsx', norm=
     return count, not_count, first100
 
 
-def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0,method="var",
+def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0, method="var",
                by_values=True,
                classified_words_file='classified words.xlsx', norm=False):
     """
@@ -356,7 +387,8 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
     line = 4
     for dim_num in steps:
         for word_num in range(num_words_remove + 1):
-            new_model, new_lst = remove_dim_and_words(lst, model, dim_num, word_num, method=method, by_values=by_values, norm=norm)
+            new_model, new_lst = remove_dim_and_words(lst, model, dim_num, word_num, method=method, by_values=by_values,
+                                                      norm=norm)
             res = one_mean(new_lst, new_model, norm)
             count, not_count, first100 = check_words(new_lst, new_model, classified_words_file,
                                                      norm=norm)
@@ -369,6 +401,13 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
             sheet1.write(line, 6, count / len(res))
             sheet1.write(line, 7, not_count)
             line += 1
+    if save_path == "output.xls":
+        save_path = method + " "
+        save_path += "by value" if by_values == True else "by dim num"
+        save_path += " " + str(steps[0]) + " to " + str(numpy.around(steps[-1]))
+        if (num_words_remove > 0):
+            save_path += " remove " + str(num_words_remove) + " words"
+        steps += ".xls"
     wb.save(save_path)
 
 
