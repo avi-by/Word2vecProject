@@ -351,6 +351,73 @@ def check_words(lst, model, classified_words_file='classified words.xlsx', norm=
     return count, not_count, first100
 
 
+def check_words_english(lst, model, classified_words_file='animals words.xlsx', norm=False):
+    """
+    get list of words word2vec model and xls file with classified words and check how much words after one mean are
+    good words how much words don't exist in the xls and in the 100 most similar words how much words are good words
+    :param lst: list of words
+    :param model: word2vec model
+    :param classified_words_file: xls file with classified words
+    :param norm: use normalized vectors
+    :return:
+    """
+    data = ps.ExcelFile(classified_words_file)
+    data = data.parse('words list')
+    first100 = 0
+    not_count = 0
+    count = 0
+    counter = 0
+    for word, index in one_mean(lst, model, norm):
+        counter += 1
+        if word in (data['name']).values:
+            count += 1
+        if word not in data['name'].values:
+            not_count += 1
+        if counter == 100:
+            first100 = count
+    return count, not_count, first100
+
+
+def eng_output(lst,model,num_words_remove=0,classified_words_file='animals words.xlsx',norm=False):
+    wb = Workbook()
+    sheet1 = wb.add_sheet('result')
+    sheet1.write(0, 0, "the words:")
+    for i in range(1, len(lst) + 1):
+        sheet1.write(0, i, lst[i - 1])
+    sheet1.write(3, 0, "vector dim")
+    sheet1.write(3, 1, "words number")
+    sheet1.write(3, 2, "num of vec")
+    sheet1.write(3, 3, "num of result")
+    sheet1.write(3, 4, "good results")
+    sheet1.write(3, 5, "good results in the first 100")
+    sheet1.write(3, 6, "good res / all res")
+    sheet1.write(3, 7, "num of not classified words")
+    sheet1.write(3, 8, "removed word")
+    line = 4
+    removed_words = []
+    current_removed_word = ""
+    for i in range(num_words_remove + 1):
+        new_lst = remove_words_from_lst(lst, model, i)
+        res = one_mean(new_lst, model, norm)
+        count, not_count, first100 = check_words_english(new_lst, model,classified_words_file)
+        for i in lst:
+            if i not in new_lst:
+                if i not in removed_words:
+                    removed_words.append(i)
+                    current_removed_word = i
+        sheet1.write(line, 0, len(model.vectors[0]))
+        sheet1.write(line, 1, len(new_lst))
+        sheet1.write(line, 2, len(model.vectors))
+        sheet1.write(line, 3, len(res))
+        sheet1.write(line, 4, count)
+        sheet1.write(line, 5, first100)
+        sheet1.write(line, 6, count / len(res))
+        sheet1.write(line, 7, not_count)
+        sheet1.write(line, 8, current_removed_word)
+        line += 1
+    wb.save('english_output 45 to 25 words.xls')
+
+
 def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0, method="var",
                by_values=True,
                classified_words_file='classified words.xlsx', norm=False):
@@ -358,6 +425,7 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
     make xls file with data on the result of one mean on the model before anf after the remove of the dimensions
     and the words. the data include the number of results, the number of the good results
     and the number of the good results in the first 100 results
+    :param method: the method to calculate the dimension to remove
     :param lst: list of the words
     :param model: word2vec model
     :param save_path: the path of the output file
@@ -405,7 +473,7 @@ def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -
         save_path = method + " "
         save_path += "by value" if by_values == True else "by dim num"
         save_path += " " + str(steps[0]) + " to " + str(numpy.around(steps[-1]))
-        if (num_words_remove > 0):
+        if num_words_remove > 0:
             save_path += " remove " + str(num_words_remove) + " words"
         steps += ".xls"
     wb.save(save_path)
@@ -422,6 +490,7 @@ def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_values=True, 
     :param model: word2vec model
     :param steps: range, for the removing of the dimensions
     :param by_values: if true remove dimensions by the variance size and not by the quantity of the dimensions
+    :param method: the method to calculate the dimension to remove
     :param classified_words_file: xls file with classified words
     :param norm: use normalized vectors
     :return:
