@@ -246,6 +246,67 @@ def remove_dim(lst, model, dim_num, method="var", by_values=False, norm=False, *
     return new_model
 
 
+def remove_dim_change_model(lst, model, dim_num, method="var", by_values=False, norm=False, **kwargs):
+    """
+    make from the model and the word list (lst) new model with new vectors with only dim_num dimension
+    the vector calculate by calculate the variance of the dimension of the word vectors of "lst"
+    then take only the dimension with the smaller variance
+    the number of the dimension in the result is:
+    if dim num is between -1 to 1 it calculate vector_size * dim_num else it the original dim num
+    then if dim num > 0  dim num is the number of the dimension in the result
+    if  dim num <0 dim num is the number of dimension to remove
+    and drop the (model.wv.vectors_size - dim_num ) dimension with the biggest variance
+    if by_values is true then dim_num represents variance size,
+    all the dimensions with variance less then or equal to dim_num will include in the result
+    and if by_values is true and dim_num <0 then the include dimensions is the dimension with variance less then
+    or equal to the largest variance value + dim_num (dim_num is negative)
+    :param lst: list of words to calculate the score of the vectors
+    :param model: Word2Vec model
+    :param dim_num: vector size of the new model
+    :param by_values: filter the dimensions by the size of their score method
+    :param norm: use normalized vectors
+    :return: KeyedVectors object with the new vectors
+    """
+    wv = model.wv if type(model) is not gensim.models.keyedvectors.Word2VecKeyedVectors else model
+    if dim_num == 0:
+        new_model = KeyedVectors(wv.vectors.shape[1])
+        new_model.add(wv.index2word, wv.vectors)
+        return new_model
+    if not by_values:
+        #  if dim num is percent of the vector size
+        if -1 < dim_num < 1:
+            dim_num = int(wv.vector_size * dim_num)
+        if dim_num < 0:
+            dim = wv.vector_size + dim_num
+        else:
+            dim = dim_num
+    arr = []
+    score_lst = (vectors_score(lst, model, method=method, norm=norm, kwargs=kwargs))
+    # sort by the score from smaller to bigger and that is also from the similar to the different
+    score_lst.sort(key=lambda k: k[1])
+    if not by_values:
+        # list of dimension, the list size is dim_num,
+        # the dimensions in the list is the most similar\good dimension - the smaller score
+        for i in score_lst[:dim]:
+            arr.append(i[0])
+    else:
+        if dim_num < 0:
+            dim_num = score_lst[-1][1] + dim_num
+        # take the dimensions with score less than or equal to dim_num
+        for i in score_lst:
+            if i[1] <= dim_num:
+                arr.append(i[0])
+    # sort by dimension index
+    arr.sort()
+    # take all the vector and for each vector take only the elements in the arr list
+    # its in fact remove the not necessary dimension from the vectors
+    vectors = wv.vectors[:, arr]
+    model.wv.vectors = vectors
+    model.wv.vectors_norm = None
+    model.wv.init_sims()
+    return model
+
+
 def remove_words_from_lst(lst, model, num=1, norm=False):
     """
     return new word list in size of len(lst)-num of the most similar words in lst
