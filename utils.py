@@ -422,8 +422,9 @@ def check_words_english(lst, model, classified_words_file='animals words.xlsx', 
     :param norm: use normalized vectors
     :return:
     """
-    data = ps.ExcelFile(classified_words_file)
-    data = data.parse('words list')
+    datasrc = ps.ExcelFile(classified_words_file)
+    data = datasrc.parse('words list')
+    wrong = datasrc.parse('wrong words')
     first100 = 0
     not_count = 0
     count = 0
@@ -432,12 +433,11 @@ def check_words_english(lst, model, classified_words_file='animals words.xlsx', 
         counter += 1
         if word in (data['name']).values:
             count += 1
-        if word not in data['name'].values:
+        if word not in data['name'].values and word not in wrong['wrong words'].values:
             not_count += 1
         if counter == 100:
             first100 = count
     return count, not_count, first100
-
 
 def eng_output(lst,model,num_words_remove=0,classified_words_file='animals words.xlsx',norm=False):
     wb = Workbook()
