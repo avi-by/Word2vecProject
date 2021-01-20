@@ -186,6 +186,24 @@ def entropy(data_vector):
     return -numpy.sum(p * numpy.log2(p))
 
 
+def radius(lst,model,norm=False):
+    """
+    calculate the furthest distance from the avg vector of the list of the words and the words. its use aa the radius in
+    the function "the mean"
+    :param lst:list of words
+    :param model:word2vec model
+    :param norm:if True use normalized vectors
+    :return:the distance of the furthest words from the avg vector, float number
+    """
+    wv = model.wv if type(model) is not gensim.models.keyedvectors.Word2VecKeyedVectors else model
+    dist = []
+    for word in lst:
+        temp = my_similarity(wv.word_vec(word, use_norm=False), avg_vec_model(lst, model, norm))
+        dist.append((word, temp))
+    dist.sort(key=lambda k: k[1])
+    return dist[0][1]
+
+
 def remove_dim(lst, model, dim_num, method="var", by_values=False, norm=False, **kwargs):
     """
     make from the model and the word list (lst) new model with new vectors with only dim_num dimension
@@ -407,7 +425,7 @@ def check_words(lst, model, classified_words_file='classified words.xlsx', norm=
             count += 1
         if word not in data['name'].values:
             not_count += 1
-        if counter == 100:
+        if counter == 20:
             first100 = count
     return count, not_count, first100
 
@@ -425,21 +443,26 @@ def check_words_english(lst, model, classified_words_file='animals words.xlsx', 
     datasrc = ps.ExcelFile(classified_words_file)
     data = datasrc.parse('words list')
     wrong = datasrc.parse('wrong words')
-    first100 = 0
+    first20 = 0
     not_count = 0
     count = 0
     counter = 0
+    ap=0
     for word, index in one_mean(lst, model, norm):
         counter += 1
         if word in (data['name']).values:
             count += 1
+            ap += count / counter
         if word not in data['name'].values and word not in wrong['wrong words'].values:
             not_count += 1
-        if counter == 100:
-            first100 = count
-    return count, not_count, first100
+        if counter == 20:
+            first20 = count
+    ap = ap / counter
+    recall=count/len(data['name'])
+    return count, not_count, first20,ap,recall
 
-def eng_output(lst,model,num_words_remove=0,classified_words_file='animals words.xlsx',norm=False):
+
+def eng_output(lst,model,num_words_remove=0,file_name='eng_output.xls',classified_words_file='animals words.xlsx',norm=False):
     wb = Workbook()
     sheet1 = wb.add_sheet('result')
     sheet1.write(0, 0, "the words:")
@@ -450,33 +473,43 @@ def eng_output(lst,model,num_words_remove=0,classified_words_file='animals words
     sheet1.write(3, 2, "num of vec")
     sheet1.write(3, 3, "num of result")
     sheet1.write(3, 4, "good results")
-    sheet1.write(3, 5, "good results in the first 100")
-    sheet1.write(3, 6, "good res / all res")
-    sheet1.write(3, 7, "num of not classified words")
-    sheet1.write(3, 8, "removed word")
+    sheet1.write(3, 5, "good results in the first 20")
+    sheet1.write(3, 6, "Precision (good res / all res)")
+    sheet1.write(3, 7, "Recall")
+    sheet1.write(3, 8, "f1")
+    sheet1.write(3, 9, "Average Precision")
+    sheet1.write(3, 10, "num of not classified words")
+    sheet1.write(3, 11, "removed word")
+    sheet1.write(3, 12, "radius")
     line = 4
     removed_words = []
     current_removed_word = ""
     for i in range(num_words_remove + 1):
         new_lst = remove_words_from_lst(lst, model, i)
         res = one_mean(new_lst, model, norm)
-        count, not_count, first100 = check_words_english(new_lst, model,classified_words_file)
+        count, not_count, first20,ap,recall = check_words_english(new_lst, model,classified_words_file)
+        rand = radius(new_lst,model)
         for i in lst:
             if i not in new_lst:
                 if i not in removed_words:
                     removed_words.append(i)
                     current_removed_word = i
+        precision=count / len(res)
         sheet1.write(line, 0, len(model.vectors[0]))
         sheet1.write(line, 1, len(new_lst))
         sheet1.write(line, 2, len(model.vectors))
         sheet1.write(line, 3, len(res))
         sheet1.write(line, 4, count)
-        sheet1.write(line, 5, first100)
-        sheet1.write(line, 6, count / len(res))
-        sheet1.write(line, 7, not_count)
-        sheet1.write(line, 8, current_removed_word)
+        sheet1.write(line, 5, first20)
+        sheet1.write(line, 6, precision)
+        sheet1.write(line, 7, recall)
+        sheet1.write(line, 8, (2*precision*recall)/(precision+recall))
+        sheet1.write(line, 9, ap)
+        sheet1.write(line, 10, not_count)
+        sheet1.write(line, 11, current_removed_word)
+        sheet1.write(line, 12, rand.item())
         line += 1
-    wb.save('english_output 45 to 25 words.xls')
+    wb.save(file_name)
 
 
 def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0, method="var",
@@ -568,12 +601,12 @@ def output_graph(lst, model, steps=numpy.arange(0, -1.5, -0.2), by_values=True, 
         firstarray.append(first100)
         goodresarray.append(count)
         resnumarray.append(len(res))
-    titel = "" if len(steps) == 1 else "remove dim by step of " + str(steps[1] - steps[0])
-    if titel is not "" and by_values is True:
-        titel += " variance size"
-    plot(xdata, resnumarray, "number of dimension", "number of result", titel, "result number.png")
-    plot(xdata, goodresarray, "number of dimension", "number of the good results", titel, "good results.png", arg='g')
-    plot(xdata, firstarray, "number of dimension", "number of the good words in the first 100 results", titel,
+    title = "" if len(steps) == 1 else "remove dim by step of " + str(steps[1] - steps[0])
+    if title != "" and by_values is True:
+        title += " variance size"
+    plot(xdata, resnumarray, "number of dimension", "number of result", title, "result number.png")
+    plot(xdata, goodresarray, "number of dimension", "number of the good results", title, "good results.png", arg='g')
+    plot(xdata, firstarray, "number of dimension", "number of the good words in the first 100 results", title,
          "number of first 100 good results.png", arg='m', ylim=(0, 100))
 
 
