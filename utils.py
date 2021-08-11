@@ -30,31 +30,29 @@ def avg_vec_model(lst, model, norm=False):
     lst_vec = []
     for e in lst:
         lst_vec.append(wv.word_vec(e, use_norm=norm))
-    avg = numpy.average(lst_vec, axis=0)
-    arr = numpy.asarray(avg)
-    return arr
+    return avg_vec(lst_vec)
 
 
 def one_mean(lst, model, norm=False):
     """
-    calculate the avg vector from list of words by word2vec model and calculate the distance from the avg vector to
-    every vector of word in the list and use the largest distance to define accepted distance,
-    then find all the vectors in the model that in the accepted distance
+    calculate the avg vector from list of words vectors from word2vec model, then calculate the distance from the avg
+    vector to every vector of word in the list, and use the largest distance to define accepted distance,
+    then find all the vectors in the model that in the accepted distance.
     :param lst: list of word to make from them the avg vector
-    :param model:word2vec model
+    :param model: word2vec model
     :param norm: use normalized vectors
-    :return:list of tuple of word and similarity to the avg vector sorted by similarity
+    :return:list of tuple of word and similarity to the avg vector sorted by the similarity
     """
     wv = model.wv if type(model) is not gensim.models.keyedvectors.Word2VecKeyedVectors else model
     # calculate the avg vector
     avg = avg_vec_model(lst, model, norm)
-    # calculate the similarity(distance by cosine similarity metrica) of every word in the list and the avg vector
+    # calculate the similarity(distance by cosine similarity metric) of every word in the list and the avg vector
     dist = distances(avg, lst, model, norm)
     # sort the distances from the farthest to the closest and take the first, the farthest
     dist.sort()
     dist = dist[0]
     # find i bigger then the num of the word that we want to include to use in 'topn' parameter
-    i = 100
+    i = 1000
     while wv.similar_by_vector(avg, topn=i)[-1][1] > dist:
         i *= 2
     return [(word, distance) for (word, distance) in wv.similar_by_vector(avg, topn=i) if distance >= dist]
@@ -180,13 +178,16 @@ def entropy(data_vector):
     :param data_vector: vector with the data values
     :return: float value of the entropy
     """
+    # convert the values to non-negative integer values with unique return inverse
     unq, converted_data = numpy.unique(data_vector, return_inverse=True)
+    # the function 'bincount' count number of occurrences of each value in array of non-negative ints
     count = numpy.bincount(converted_data)
+    # create list of the probability of every value from the values list
     p = count / float(len(data_vector))
     return -numpy.sum(p * numpy.log2(p))
 
 
-def radius(lst,model,norm=False):
+def radius(lst, model, norm=False):
     """
     calculate the furthest distance from the avg vector of the list of the words and the words. its use aa the radius in
     the function "the mean"
@@ -430,7 +431,7 @@ def check_words(lst, model, classified_words_file='classified words.xlsx', norm=
     return count, not_count, first100
 
 
-def check_words_english(lst, model, classified_words_file='animals words.xlsx', norm=False):
+def check_words_english(lst, model, classified_words_file='animals words.xlsx',till_recall=False ,norm=False):
     """
     get list of words word2vec model and xls file with classified words and check how much words after one mean are
     good words how much words don't exist in the xls and in the 100 most similar words how much words are good words
@@ -443,12 +444,16 @@ def check_words_english(lst, model, classified_words_file='animals words.xlsx', 
     datasrc = ps.ExcelFile(classified_words_file)
     data = datasrc.parse('words list')
     wrong = datasrc.parse('wrong words')
+    max_recall=len(data['name'])
     first20 = 0
     not_count = 0
     count = 0
     counter = 0
-    ap=0
-    for word, index in one_mean(lst, model, norm):
+    ap = 0
+    onemean= one_mean(lst, model, norm)
+    if till_recall:
+        onemean=onemean[:max_recall]
+    for word, index in onemean:
         counter += 1
         if word in (data['name']).values:
             count += 1
@@ -458,13 +463,23 @@ def check_words_english(lst, model, classified_words_file='animals words.xlsx', 
         if counter == 20:
             first20 = count
     ap = ap / counter
-    recall=count/len(data['name'])
-    return count, not_count, first20,ap,recall
+    recall = count / max_recall
+    precision = count/counter
+    return count, not_count, first20, ap, recall, precision, counter
 
 
-def eng_output(lst,model,num_words_remove=0,file_name='eng_output.xls',classified_words_file='animals words.xlsx',norm=False):
+def eng_output(lst, model, num_words_remove=0, file_name='eng_output.xls', classified_words_file='animals words.xlsx',
+               norm=False):
+    model = model.wv if type(model) is not gensim.models.keyedvectors.Word2VecKeyedVectors else model
     wb = Workbook()
     sheet1 = wb.add_sheet('result')
+    calculate_result(classified_words_file, lst, model, norm, num_words_remove, sheet1)
+    sheet2 = wb.add_sheet('result till recall')
+    calculate_result(classified_words_file, lst, model, norm, num_words_remove, sheet2,till_recall=True)
+    wb.save(file_name)
+
+
+def calculate_result(classified_words_file, lst, model, norm, num_words_remove, sheet1,till_recall=False):
     sheet1.write(0, 0, "the words:")
     for i in range(1, len(lst) + 1):
         sheet1.write(0, i, lst[i - 1])
@@ -486,30 +501,28 @@ def eng_output(lst,model,num_words_remove=0,file_name='eng_output.xls',classifie
     current_removed_word = ""
     for i in range(num_words_remove + 1):
         new_lst = remove_words_from_lst(lst, model, i)
-        res = one_mean(new_lst, model, norm)
-        count, not_count, first20,ap,recall = check_words_english(new_lst, model,classified_words_file)
-        rand = radius(new_lst,model)
+        #res = one_mean(new_lst, model, norm)
+        count, not_count, first20, ap, recall,precision,counted = check_words_english(new_lst, model, classified_words_file,till_recall)
+        rand = radius(new_lst, model)
         for i in lst:
             if i not in new_lst:
                 if i not in removed_words:
                     removed_words.append(i)
                     current_removed_word = i
-        precision=count / len(res)
         sheet1.write(line, 0, len(model.vectors[0]))
         sheet1.write(line, 1, len(new_lst))
         sheet1.write(line, 2, len(model.vectors))
-        sheet1.write(line, 3, len(res))
+        sheet1.write(line, 3, counted)
         sheet1.write(line, 4, count)
         sheet1.write(line, 5, first20)
         sheet1.write(line, 6, precision)
         sheet1.write(line, 7, recall)
-        sheet1.write(line, 8, (2*precision*recall)/(precision+recall))
+        sheet1.write(line, 8, (2 * precision * recall) / (precision + recall))
         sheet1.write(line, 9, ap)
         sheet1.write(line, 10, not_count)
         sheet1.write(line, 11, current_removed_word)
         sheet1.write(line, 12, rand.item())
         line += 1
-    wb.save(file_name)
 
 
 def output_res(lst, model, save_path="output.xls", steps=numpy.arange(0, -1.5, -0.2), num_words_remove=0, method="var",
